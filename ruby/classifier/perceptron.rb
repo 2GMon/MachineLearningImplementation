@@ -35,16 +35,13 @@ module MachineLearning
       @weight = weight
     end
 
-    def clasify(test_data)
+    def classify(test_data)
       bias_test_data = add_bias(test_data)
-      bias_test_data.each_with_index do |data, i|
-        puts "data: #{data.to_s}"
-        print "discriminant_function_results: "
-        r = @weight.map do |w|
+      bias_test_data.map do |data|
+        discriminant_result = @weight.map do |w|
           discriminant_function(data, w)
-        end.to_s
-        puts r
-        puts
+        end
+        @uniq_class[discriminant_result.index(discriminant_result.max)]
       end
     end
 
