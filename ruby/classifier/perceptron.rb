@@ -14,6 +14,7 @@ module MachineLearning
       else
         weight = initialize_weight(bias_train_data[0].size, train_class.uniq.size)
       end
+      @uniq_class = train_class.uniq.sort
 
       classify_correctly_all = false
       until classify_correctly_all
@@ -24,7 +25,7 @@ module MachineLearning
           end
 
           classification_class = discriminant_results.index(discriminant_results.max)
-          actuals_class = train_class.uniq.sort.index(train_class[i])
+          actuals_class = @uniq_class.index(train_class[i])
           unless classification_class == actuals_class
             classify_correctly_all = false
             weight = update_weight(weight, data, @rho, classification_class, actuals_class)
