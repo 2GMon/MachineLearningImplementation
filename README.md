@@ -5,4 +5,4 @@ MachineLearningImplementation
 
 # 実装済みアルゴリズム
 
-* パーセプトロン(Ruby)
+* パーセプトロン(Ruby, Scala)
