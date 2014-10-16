@@ -54,7 +54,12 @@ package jp.mydns._2gmon.machinelearning.classifier {
       new Perceptron(rho, convergenceTest(List(List()), initialWeight))
     }
 
-    def classify(trainData : List[List[Double]]) {
+    def classify(trainData : List[List[Double]]) : List[Int] = {
+      val biasTrainData = trainData.map(1.0 :: _)
+      (for (data <- biasTrainData) yield {
+        val discriminantResult = weight.map(w => discriminantFunction(data, w))
+        discriminantResult.indexOf(discriminantResult.max)
+      }).toList
     }
   }
 }
