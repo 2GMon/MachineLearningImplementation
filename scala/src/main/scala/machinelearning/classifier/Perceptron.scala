@@ -1,10 +1,10 @@
 package jp.mydns._2gmon.machinelearning.classifier {
-  class Perceptron(val rho : Double = 0.5, var weight : List[List[Double]] = Nil) extends Classifier {
+  class Perceptron(val rho : Double = 0.5, val weight : List[List[Double]] = Nil) extends Classifier {
     def discriminantFunction(data : List[Double], weight : List[Double]) : Double = {
       data.zip(weight).map(a => a._1 * a._2).fold(0.0)((a, b) => a + b)
     }
 
-    def learn(trainData : List[List[Double]], trainClass : List[Int]) = {
+    def learn(trainData : List[List[Double]], trainClass : List[Int]) : Perceptron = {
       val biasTrainData = trainData.map(1.0 :: _)
       def initializeWeight(classNum : Int, dimension: Int) : List[List[Double]] = {
         (1 to classNum).map(_ => (1 to dimension).map(_ => scala.util.Random.nextDouble).toList).toList
@@ -51,7 +51,7 @@ package jp.mydns._2gmon.machinelearning.classifier {
           initializeWeight(trainClass.distinct.length, biasTrainData.head.length)
         else
           weight
-      weight = convergenceTest(List(List()), initialWeight)
+      new Perceptron(rho, convergenceTest(List(List()), initialWeight))
     }
 
     def classify(trainData : List[List[Double]]) {
