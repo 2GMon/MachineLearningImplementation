@@ -6,3 +6,4 @@ MachineLearningImplementation
 # 実装済みアルゴリズム
 
 * パーセプトロン(Ruby, Scala)
+* Widrow-Hoff(Ruby)
