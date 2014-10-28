@@ -17,4 +17,4 @@ train_class = read_class_file(File.dirname(__FILE__) + "/train_class.txt")
 
 perceptron = MachineLearning::Perceptron.new()
 perceptron.learn(train_data, train_class)
-perceptron.clasify(train_data)
+perceptron.classify(train_data)
