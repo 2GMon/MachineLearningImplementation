@@ -1,5 +1,3 @@
-require_relative '../classifier.rb'
-
 module MachineLearning
   class Perceptron < Classifier
     def initialize(rho = 0.5, weight = nil)

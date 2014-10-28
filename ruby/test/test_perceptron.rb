@@ -1,6 +1,6 @@
 require 'minitest/unit'
 require 'minitest/autorun'
-require_relative '../classifier/perceptron'
+require_relative '../machinelearning'
 
 class TestPerceptron < MiniTest::Unit::TestCase
   def setup
